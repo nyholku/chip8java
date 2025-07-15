@@ -50,7 +50,7 @@ import java.util.Map;
  * @author Kustaa Nyholm
  */
 public class ChipEmuMain {
-	public ChipEmuMain() {
+	public ChipEmuMain(String...args) {
 		boolean[] keyPressed = new boolean[16];
 
 		// Instantiate the emulator and use an anonymous class to implement the interface
@@ -70,7 +70,11 @@ public class ChipEmuMain {
 		Chip8Emu emulator = new Chip8Emu(chip8io);
 		
 		// Load a game with the help of the Games class, all games are in the package chip8.games as ch8 binary files
-		Games.Game game = Games.getGames().get("Invaders");
+		String name="Invaders";
+		if (args.length>0)
+			name = args[0];
+		System.out.println("Starting game "+name);
+		Games.Game game = Games.getGames().get(name);
 		emulator.loadGame(game.getAsStream());
 		
 		// Invaders uses arrow keys, star/shoot with the cursor up key, left/right to move the gun
@@ -145,7 +149,7 @@ public class ChipEmuMain {
 	public static void main(String[] args) {
 		// The UI needs to be created in the EDT so we instantiate the whole thing there with this
 		SwingUtilities.invokeLater(() -> {
-			new ChipEmuMain();
+			new ChipEmuMain(args);
 		});
 
 	}
