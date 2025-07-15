@@ -57,6 +57,7 @@ public class ChipEmuMain {
 		Chip8Emu.Chip8IO chip8io = new Chip8Emu.Chip8IO() {
 			@Override
 			public boolean testKey(int key) {
+				System.out.println(key+" "+ keyPressed[key]);
 				return keyPressed[key];
 			}
 
