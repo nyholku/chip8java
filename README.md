@@ -1,4 +1,4 @@
-#A simple CHIP8 simulator in Java
+# A simple CHIP8 simulator in Java
 
 This code was originally written as a  MIDlet for Nokia 6230 phone.
 
